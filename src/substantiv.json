@@ -1,0 +1,35 @@
+[
+	{
+		singular: {
+			undefinite: "dag",
+			definite: "dagen"
+		},
+		plural: {
+			undefinite: "dager",
+			definite: "dagene"
+		},
+		gender: "male"
+	},
+	{
+		singular: {
+			undefinite: "uke",
+			definite: "uken"
+		},
+		plural: {
+			undefinite: "uker",
+			definite: "ukene"
+		},
+		gender: "male"
+	},
+	{
+		singular: {
+			undefinite: "verb",
+			definite: "verbet"
+		},
+		plural: {
+			undefinite: "verber",
+			definite: "verbene"
+		},
+		gender: "neutral"
+	}
+]
