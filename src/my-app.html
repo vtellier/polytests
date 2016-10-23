@@ -21,6 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="na-login.html">
 
 <dom-module id="my-app">
   <template>
@@ -62,6 +64,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: bold;
       }
     </style>
+    
+    <firebase-auth
+        id="auth"
+        app-name="ordhuset"
+        provider="google"
+        signed-in="{{signedIn}}"
+        user="{{user}}">
+    </firebase-auth>
+
+    <firebase-document
+        id="document"
+        app-name="ordhuset"
+        path="test/list"
+        data="{{editableNote}}">
+    </firebase-document>
 
     <app-location route="{{route}}"></app-location>
     <app-route
@@ -75,14 +92,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer>
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
+          <a name="my-view1" href="/my-view1">View One</a>
+          <a name="my-view2" href="/my-view2">View Two</a>
+          <a name="my-view3" href="/my-view3">View Three</a>
+          <a name="word-list" href="/word-list">List</a>
         </iron-selector>
       </app-drawer>
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
+        
+      <na-login
+        on-sign-in="signIn"
+        signed-in="[[signedIn]]"
+        disabled="[[!online]]">
+      </na-login>
 
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
@@ -94,12 +118,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-pages
             selected="[[page]]"
             attr-for-selected="name"
-            fallback-selection="view404"
+            fallback-selection="my-view404"
             role="main">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>
+          <my-view1 name="my-view1"></my-view1>
+          <my-view2 name="my-view2"></my-view2>
+          <my-view3 name="my-view3"></my-view3>
+          <word-list name="word-list"></word-list>
+          <my-view404 name="my-view404"></my-view404>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -122,17 +147,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'my-view1';
       },
 
       _pageChanged: function(page) {
         // Load page import on demand. Show 404 page if fails
-        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+        var resolvedPageUrl = this.resolveUrl(page + '.html');
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
       },
 
       _showPage404: function() {
-        this.page = 'view404';
+        this.page = 'my-view404';
+      },
+      
+      signIn: function() {
+        this.$.auth.signInWithPopup();
       }
     });
     

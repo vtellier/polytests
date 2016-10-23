@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
+    <meta name="application-name" content="Ordhuset">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -93,6 +93,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </script>
 
     <link rel="import" href="/src/my-app.html">
+    <link rel="import" href="bower_components/polymerfire/firebase-app.html">
 
     <style>
       body {
@@ -105,7 +106,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
+    <!-- Change to kebab case? -->
+    <firebase-app
+        name="ordhuset"
+        api-key="AIzaSyCh0p0DgdzkdGYn-nmy_KGJkWk9mr9A46w"
+        auth-domain="ordhuset-5e76d.firebaseapp.com"
+        database-url="https://ordhuset-5e76d.firebaseio.com">
+    </firebase-app>
     <my-app></my-app>
-    <!-- Built with love using Polymer Starter Kit -->
   </body>
 </html>

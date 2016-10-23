@@ -1,0 +1,64 @@
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="word-list">
+
+    <template>
+        <style>
+          /* CSS rules for your element */
+        </style>
+
+        <!-- local DOM for your element -->
+
+        <paper-fab
+            icon="add"
+            title="add a word"
+            on-tap="create">
+        </paper-fab>
+
+        <div>{{greeting}}</div> <!-- data bindings in local DOM -->
+      </template>
+
+    <script>
+        // element registration
+        Polymer({
+            is: "word-list",
+
+            // add properties and methods on the element's prototype
+
+            properties: {
+                // declare properties for the element's public API
+                greeting: {
+                    type: String,
+                    value: "Hello!"
+                }
+            },
+
+            created: function() {
+                console.log(this.localName + '#' + this.id + ' was created');
+            },
+
+            ready: function() {
+                console.log(this.localName + '#' + this.id + ' has local DOM initialized');
+            },
+
+            attached: function() {
+                console.log(this.localName + '#' + this.id + ' was attached');
+            },
+
+            detached: function() {
+                console.log(this.localName + '#' + this.id + ' was detached');
+            },
+
+            attributeChanged: function(name, type) {
+                console.log(this.localName + '#' + this.id + ' attribute ' + name +
+                    ' was changed to ' + this.getAttribute(name));
+            },
+            
+            create: function() {
+                alert("hello");
+            }
+        });
+    </script>
+
+</dom-module>
