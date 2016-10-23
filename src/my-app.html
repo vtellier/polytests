@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">Substantives</a>
+          <a name="view2" href="/view2">View Two</a>
           <a name="view3" href="/view3">View Three</a>
         </iron-selector>
       </app-drawer>
@@ -135,18 +135,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.page = 'view404';
       }
     });
+    
   </script>
-
-  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-  <script>
-  // Initialize Firebase
-  var config = {
-	      apiKey: "AIzaSyBeOdN4df68kbR8odFv2hfWPetn6ABips4",
-	      authDomain: "ordhuset-6cada.firebaseapp.com",
-	          databaseURL: "https://ordhuset-6cada.firebaseio.com",
-		          storageBucket: "",
-			      messagingSenderId: "483552768612"
-				        };
-  firebase.initializeApp(config);
-  </script>
+  
 </dom-module>

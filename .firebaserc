@@ -1,6 +1,7 @@
 {
   "projects": {
     "ord": "ordhuset-6cada",
-    "ordhuset": "ordhuset-6cada"
+    "ordhuset": "ordhuset-6cada",
+    "default": "ordhuset-5e76d"
   }
 }
